@@ -1,85 +1,96 @@
-import org.apache.poi.hssf.usermodel.HSSFCell;
+package com;
+
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import sun.util.resources.cldr.yav.LocaleNames_yav;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.math.BigDecimal;
-import java.security.PrivilegedExceptionAction;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @Author: HGF
- * ate: 4/16/21
+ * @Date: 4/21/21
  */
-public class main {
-
+public class WriteExcelService {
     private static final String LAYER05 = "05_SIG2.lyr";
     private static final String LAYER07 = "07_SIG3.lyr";
     private static final String LAYER03 = "03_SIG1.lyr";
+    private static final String LAYER12 = "12_SIG4.lyr";
+    private static final String LAYER14 = "14_SIG5.lyr";
 
-    public static void main(String[] args) {
-        collectData(LAYER03);
-        collectData(LAYER05);
-        collectData(LAYER07);
+    public WriteExcelService() {
+
     }
 
-    private static void collectData(String layerName) {
-        File file = new File("/home/aurora/Documents/rocky-pre-layout/design_case/design/AuroraDB/layers/" + layerName);
-        Map<String, List<Double>> dqMap = new HashMap<>();
-        List<Double> dq = new ArrayList<>();
-        String dqName = "";
+    public void write() {
+        Map<String, Double> data = new HashMap<>();
+        //        collectData(LAYER03, data);
+//        collectData(LAYER05, data);
+//        collectData(LAYER07, data);
+//        collectData(LAYER14, data);
+//        collectData(LAYER12, data);
+
+//        collectData("L3.lyr", data);
+//        collectData("L5.lyr", data);
+//        collectData("L7.lyr", data);
+//        collectData("L8.lyr", data);
+//        collectData("L10.lyr", data);
+//        collectData("LN12.lyr", data);
+
+        collectData("TOP.lyr", data);
+        collectData("SIG1.lyr", data);
+        collectData("SIG3.lyr", data);
+        collectData("BOTTOM.lyr",data);
+        saveExcel(data);
+    }
+
+
+    private static void collectData(String layerName, Map<String, Double> data) {
+        File file = new File("/home/aurora/Documents/rocky-pre-layout/design_case/drone/AuroraDB/layers/" + layerName);
+        Double length = 0d;
+        String netName = "";
         try (BufferedReader bf = new BufferedReader(new FileReader(file))) {
             String line;
             String lastLine = "";
             boolean startFlag = false;
             while ((line = bf.readLine()) != null) {
-                if (line.trim().startsWith("DDR4_DQ")) {
+                if (line.trim().contains("DDR3_")) {
                     startFlag = true;
-                    dqName = line.split("\\s+")[1];
-                    dq.clear();
+                    netName = line.split("\\s+")[1];
                 }
                 if (line.trim().startsWith("Line") && startFlag) {
                     String[] split = line.split("\\s+");
-                    dq.add(calculateLength(split));
+                    length += calculateLength(split);
                 }
                 if (line.endsWith("}") && lastLine.endsWith("}") && startFlag) {
                     startFlag = false;
-                    dqMap.put(dqName, new ArrayList<>(dq));
+                    data.put(netName, length);
+                    length = 0d;
                 }
                 lastLine = line;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static void saveExcel(Map<String, Double> data) {
         try (HSSFWorkbook excel = new HSSFWorkbook()) {
             HSSFSheet sheet1 = excel.createSheet("sheet1");
             DecimalFormat df = new DecimalFormat("#.00");
             int i = 0;
-            for (Map.Entry<String, List<Double>> entry : dqMap.entrySet()) {
+            for (Map.Entry<String, Double> entry : data.entrySet()) {
                 HSSFRow row = sheet1.createRow(i);
                 row.createCell(0).setCellValue(entry.getKey());
-                dq = entry.getValue();
-                for (int j = 0; j < dq.size(); j++) {
-                    HSSFCell cell = row.createCell(j + 1);
-                    cell.setCellValue(df.format(dq.get(j)));
-                }
+                row.createCell(1).setCellValue(df.format(entry.getValue()));
                 i++;
             }
-            try (FileOutputStream fo = new FileOutputStream("/home/aurora/Documents/rocky-pre-layout/" + layerName + ".xlsx")){
+            try (FileOutputStream fo = new FileOutputStream("/home/aurora/Documents/rocky-pre-layout/design_case/drone/data.xlsx")){
                 excel.write(fo);
             }
         } catch (Exception e) {
