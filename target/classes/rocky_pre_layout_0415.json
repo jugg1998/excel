@@ -1,0 +1,919 @@
+{
+  "id": "xxxxx",
+  "subId": "xxxxx",
+  "pcbName": "myPreLayout1",
+  "version": "0.0.1",
+  "designVersion": 1,
+  "content": {
+    "prelayout": "Schematic", // "Schematic" or "Model"
+    "type": "DDR4",
+    "unit": "mil",
+    "memory": 2,
+    "width": "x8",
+    "topology": "Fly-by",
+    "lib": "path_to_physical_routes_lib.json",
+    "models": [
+      {
+        "id": "1",
+        "path": "path_to_touchstone_snp_file"
+      }
+    ],
+    "signal_groups": [
+      {
+        "name": "Byte0",
+        "signal_spacing": "15",
+        "signals": [
+          {
+            "name": "DQSP",
+            "index": "0",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": [
+                  "2"
+                ]
+              },
+              {
+                "id": "2",
+                "libId": "2222222222222",
+                "libType": "stripline",
+                "type": "trace",
+                "template": "Trace2",
+                "length": "11",
+                "prev": "1",
+                "next": []
+              },
+              {
+                "id": "3",
+                "type": "resistor",
+                "value": "38",
+                "prev": "2",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DQS0P"
+            ]
+          },
+          {
+            "name": "DQSN",
+            "index": "1",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": [
+                  "2"
+                ]
+              },
+              {
+                "id": "2",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "1",
+                "next": []
+              },
+              {
+                "id": "3",
+                "type": "resistor",
+                "value": "38",
+                "prev": "2",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DQS0N"
+            ]
+          },
+          {
+            "name": "DQ0",
+            "index": "2",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DQ0"
+            ]
+          },
+          {
+            "name": "DQ7",
+            "index": "9",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DQ7"
+            ]
+          },
+          {
+            "name": "DM",
+            "index": "10",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DM0"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Byte1",
+        "signal_spacing": "15",
+        "signals": [
+          {
+            "name": "DQSP",
+            "index": "0",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": [
+                  "2"
+                ]
+              },
+              {
+                "id": "2",
+                "libId": "2222222222222",
+                "libType": "stripline",
+                "type": "trace",
+                "template": "Trace2",
+                "length": "11",
+                "prev": "1",
+                "next": []
+              },
+              {
+                "id": "3",
+                "type": "resistor",
+                "value": "38",
+                "prev": "2",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DQS1P"
+            ]
+          },
+          {
+            "name": "DQSN",
+            "index": "1",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": [
+                  "2"
+                ]
+              },
+              {
+                "id": "2",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "1",
+                "next": []
+              },
+              {
+                "id": "3",
+                "type": "resistor",
+                "value": "38",
+                "prev": "2",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DQS1N"
+            ]
+          },
+          {
+            "name": "DQ0",
+            "index": "2",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DQ8"
+            ]
+          },
+          {
+            "name": "DQ7",
+            "index": "9",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DQ15"
+            ]
+          },
+          {
+            "name": "DM",
+            "index": "10",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "insertionLoss": "2",
+            "nets": [
+              "DM1"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "CLK",
+        "signal_spacing": "15",
+        "signals": [
+          {
+            "name": "CLKP",
+            "index" : "0",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": [
+                  "2"
+                ]
+              },
+              {
+                "id": "2",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "1",
+                "next": []
+              }
+            ],
+            "nets": [
+              "CLKP"
+            ]
+          },
+          {
+            "name": "CLKN",
+            "index" : "0",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": [
+                  "2"
+                ]
+              },
+              {
+                "id": "2",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "1",
+                "next": []
+              }
+            ],
+            "nets": [
+              "CLKN"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ADR",
+        "signal_spacing": "15",
+        "signals": [
+          {
+            "name": "A0",
+            "index": "0",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "nets": [
+              "A0"
+            ]
+          },
+          {
+            "name": "A16",
+            "index": "1",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "nets": [
+              "A16"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "CMD",
+        "signal_spacing": "15",
+        "signals": [
+          {
+            "name": "BA0",
+            "index": "0",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "nets": [
+              "BA0"
+            ]
+          },
+          {
+            "name": "BA1",
+            "index": "1",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "nets": [
+              "BA1"
+            ]
+          },
+          {
+            "name": "CS",
+            "index": "2",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "nets": [
+              "CS"
+            ]
+          },
+          {
+            "name": "CKE",
+            "index": "3",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "nets": [
+              "CKE"
+            ]
+          },
+          {
+            "name": "ODT",
+            "index": "4",
+            "sections": [
+              {
+                "id": "1",
+                "libId": "1111111111111",
+                "libType": "microstrip",
+                "type": "trace",
+                "template": "Trace1",
+                "length": "11",
+                "prev": "",
+                "next": []
+              }
+            ],
+            "nets": [
+              "ODT"
+            ]
+          }
+        ]
+      }
+    ],
+    "components": [
+      {
+        "name": "U1",
+        "layer": "Top",
+        "type": "Contoller",
+        "pins": [
+          {
+            "pin": "DQS0P",
+            "net": "DQS0P",
+            "signal": "DQSP",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "DQS0N",
+            "net": "DQS0N",
+            "signal": "DQSN",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "DQ0",
+            "net": "DQ0",
+            "signal": "DQ0",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "DQ7",
+            "net": "DQ7",
+            "signal": "DQ7",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "DM0",
+            "net": "DM0",
+            "signal": "DM",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "DQS1P",
+            "net": "DQS1P",
+            "signal": "DQSP",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "DQS1N",
+            "net": "DQS1N",
+            "signal": "DQSN",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "DQ8",
+            "net": "DQ8",
+            "signal": "DQ0",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "DQ15",
+            "net": "DQ15",
+            "signal": "DQ7",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "DM1",
+            "net": "DM1",
+            "signal": "DM",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "CLKP",
+            "net": "CLKP",
+            "signal": "CLKP",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "CLKN",
+            "net": "CLKN",
+            "signal": "CLKN",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "A0",
+            "net": "A0",
+            "signal": "A0",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "A16",
+            "net": "A16",
+            "signal": "A16",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "BA0",
+            "net": "BA0",
+            "signal": "BA0",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "BA1",
+            "net": "BA1",
+            "signal": "BA1",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "CS",
+            "net": "CS",
+            "signal": "CS",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "CKE",
+            "net": "CKE",
+            "signal": "CKE",
+            "port": "",
+            "modelId": ""
+          },
+          {
+            "pin": "ODT",
+            "net": "ODT",
+            "signal": "ODT",
+            "port": "",
+            "modelId": ""
+          }
+        ],
+        "locations": {
+          "x": "x",
+          "y": "y",
+          "height": "",
+          "width": ""
+        }
+      },
+      {
+        "name": "UM0",
+        "layer": "Bottom",
+        "type": "Memory",
+        "pins": [
+          {
+            "pin": "DQSP",
+            "net": "DQS0P",
+            "signal": "DQSP",
+            "port": "",
+            "modelId": "",
+            "sectionId": "2"
+          },
+          {
+            "pin": "DQSN",
+            "net": "DQS0N",
+            "signal": "DQS0N",
+            "port": "",
+            "modelId": "",
+            "sectionId": "2"
+          },
+          {
+            "pin": "DQ0",
+            "net": "DQ0",
+            "signal": "DQ0",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "DQ7",
+            "net": "DQ7",
+            "signal": "DQ7",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "DM",
+            "net": "DM0",
+            "signal": "DM",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "CLKP",
+            "net": "CLKP",
+            "signal": "CLKP",
+            "port": "",
+            "modelId": "",
+            "sectionId": "2"
+          },
+          {
+            "pin": "CLKN",
+            "net": "CLKN",
+            "signal": "CLKN",
+            "port": "",
+            "modelId": "",
+            "sectionId": "2"
+          },
+          {
+            "pin": "A0",
+            "net": "A0",
+            "signal": "A0",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "A16",
+            "net": "A16",
+            "signal": "A16",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "BA0",
+            "net": "BA0",
+            "signal": "BA0",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "BA1",
+            "net": "BA1",
+            "signal": "BA1",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "CS",
+            "net": "CS",
+            "signal": "CS",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "CKE",
+            "net": "CKE",
+            "signal": "CKE",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "ODT",
+            "net": "ODT",
+            "signal": "ODT",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          }
+        ],
+        "locations": {
+          "x": "0",
+          "y": "0"
+        }
+      },
+      {
+        "name": "UM1",
+        "layer": "Bottom",
+        "type": "Memory",
+        "pins": [
+          {
+            "pin": "DQSP",
+            "net": "DQS1P",
+            "signal": "DQSP",
+            "port": "",
+            "modelId": "",
+            "sectionId": "2"
+          },
+          {
+            "pin": "DQSN",
+            "net": "DQS1N",
+            "signal": "DQSN",
+            "port": "",
+            "modelId": "",
+            "sectionId": "2"
+          },
+          {
+            "pin": "DQ0",
+            "net": "DQ8",
+            "signal": "DQ0",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "DQ7",
+            "net": "DQ15",
+            "signal": "DQ7",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "DM",
+            "net": "DM1",
+            "signal": "DM",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "CLKP",
+            "net": "CLKP",
+            "signal": "CLKP",
+            "port": "",
+            "modelId": "",
+            "sectionId": "2"
+          },
+          {
+            "pin": "CLKN",
+            "net": "CLKN",
+            "signal": "CLKN",
+            "port": "",
+            "modelId": "",
+            "sectionId": "2"
+          },
+          {
+            "pin": "A0",
+            "net": "A0",
+            "signal": "A0",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "A16",
+            "net": "A16",
+            "signal": "A16",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "BA0",
+            "net": "BA0",
+            "signal": "BA0",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "BA1",
+            "net": "BA1",
+            "signal": "BA1",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "CS",
+            "net": "CS",
+            "signal": "CS",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "CKE",
+            "net": "CKE",
+            "signal": "CKE",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          },
+          {
+            "pin": "ODT",
+            "net": "ODT",
+            "signal": "ODT",
+            "port": "",
+            "modelId": "",
+            "sectionId": "1"
+          }
+        ],
+        "locations": {
+          "x": "0",
+          "y": "m1"
+        }
+      }
+    ]
+  }
+}
