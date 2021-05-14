@@ -7,16 +7,20 @@ import java.awt.Point;
  * @Date: 4/21/21
  */
 public class CalculateTrace {
-    public CalculateTrace(){
+    public CalculateTrace() {
     }
 
-    public Double CalculateDistance(Float w, Float c, Memory memory, int index) {
-        Float section = w/8;
-        Point controllerPoint = new Point(0, (int)(section*(index*2+1)));
-        Point memoryCenter = new Point(c.intValue(), memory.y.intValue());
-        return controllerPoint.distance(memoryCenter);
+    public Double CalculateDistance(Float w, Float c, Memory memory) {
+        Float slope = memory.y / memory.x;
+        Point memoryCenter = new Point(memory.x.intValue(), memory.y.intValue());
+        Point intersection = new Point();
+        if (slope*c < w) {
+            intersection.setLocation(c, slope*c);
+        }else {
+            intersection.setLocation(w/slope, w);
+        }
+        return intersection.distance(memoryCenter);
     }
-
 
 
 }

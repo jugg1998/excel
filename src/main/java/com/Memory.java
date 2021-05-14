@@ -7,13 +7,11 @@ package com;
 public class Memory {
     Float x;
     Float y;
-    int index;
 
 
-    public Memory(Float x, Float y,int index) {
+    public Memory(Float x, Float y) {
         this.x = x;
         this.y = y;
-        this.index = index;
     }
 
     public Float getX() {
@@ -32,11 +30,5 @@ public class Memory {
         this.y = y;
     }
 
-    public int getIndex() {
-        return index;
-    }
 
-    public void setIndex(int index) {
-        this.index = index;
-    }
 }

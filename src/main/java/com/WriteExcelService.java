@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -97,6 +99,66 @@ public class WriteExcelService {
             e.printStackTrace();
         }
     }
+
+
+
+    public void writeCLK() {
+        Map<String, List<Double>> data = new HashMap<>();
+        File file = new File("/home/aurora/Documents/rocky-pre-layout/design_case/PKG/clk");
+        List<Double> lengthList = new ArrayList<>();
+        Double length = 0d;
+        String netName = "";
+        try (BufferedReader bf = new BufferedReader(new FileReader(file))) {
+            String line;
+            String lastLine = "";
+            boolean startFlag = false;
+            while ((line = bf.readLine()) != null) {
+                if (line.trim().contains("DDR4_")) {
+                    startFlag = true;
+                    lengthList.clear();
+                    netName = line.split("\\s+")[1];
+                }
+                if (line.trim().startsWith("Line") && startFlag) {
+                    String[] split = line.split("\\s+");
+                    length += calculateLength(split);
+                }
+                if (line.trim().startsWith("cut")) {
+                    lengthList.add(length);
+                    length=0d;
+                }
+                if (line.endsWith("}") && lastLine.endsWith("}") && startFlag) {
+                    startFlag = false;
+                    lengthList.add(length);
+                    data.put(netName, new ArrayList<>(lengthList));
+                    length = 0d;
+                }
+                lastLine = line;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try (HSSFWorkbook excel = new HSSFWorkbook()) {
+            HSSFSheet sheet1 = excel.createSheet("sheet1");
+            DecimalFormat df = new DecimalFormat("#.00");
+            int i = 0;
+            for (Map.Entry<String, List<Double>> entry : data.entrySet()) {
+                HSSFRow row = sheet1.createRow(i);
+                row.createCell(0).setCellValue(entry.getKey());
+                List<Double> lengths = entry.getValue();
+                for (int k=0; k<lengths.size(); k++) {
+                    row.createCell(k+1).setCellValue(df.format(lengths.get(k)));
+                }
+                i++;
+            }
+            try (FileOutputStream fo = new FileOutputStream("/home/aurora/Documents/rocky-pre-layout/design_case/PKG/length.xlsx")){
+                excel.write(fo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private static double calculateLength(String[] split) {
         Double x1 = Double.valueOf(split[2]);
